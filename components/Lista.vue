@@ -31,7 +31,9 @@ export default {
       },
 
   beforeCreate() {
-    axios.get('https://gateway.marvel.com/v1/public/characters?apikey=64f8a4a135a118c96d90eeedb37d61c8&hash=64f8a4a135a118c96d90eeedb37d61c8')
+    axios.get('https://gateway.marvel.com/v1/public/characters?ts=1&apikey=457e0666067e7294e366a7f09b3dfc13&hash=98c6c135471dc731a99d4bc5824c9ab9&limit=100')
+
+
       .then((response) => {this.characters = response.data.data.results;
               console.log(response.data.data.results)})
       .catch( (error) => console.error(error));
