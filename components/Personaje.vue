@@ -24,7 +24,7 @@
 
         <div style="height: 8px;"></div>
 
-        <div >Nombres de algunos eventos:</div>
+        <div >Apariciones:</div>
 
         <div v-for="serie in character.series.items.slice(0, 3)" :key="serie.name">{{serie.name}} </div>
 
