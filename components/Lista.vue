@@ -2,7 +2,12 @@
   <section>
     <div class="container-row">
       <div id="liste" class="container-wrap">
-        <Character v-for="character in filteredCharacters" :key="character.id" :character="character" />
+        <Character
+          v-for="character in filteredCharacters"
+          :key="character.id"
+          :character="character"
+          v-if="characterHasAnyInfo(character)"
+        />
       </div>
     </div>
   </section>
@@ -21,13 +26,29 @@ export default {
   props: {
     characters: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     filteredCharacters: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
+
+  methods: {
+    characterHasAnyInfo(character) {
+      return (
+        character.name ||
+        character.description ||
+        (character.thumbnail &&
+          character.thumbnail.path &&
+          character.thumbnail.extension) ||
+        (character.comics && character.comics.available > 0) ||
+        (character.series && character.series.available > 0) ||
+        (character.events && character.events.available > 0) ||
+        (character.stories && character.stories.available > 0)
+      );
+    }
+  }
 }
 </script>
 
@@ -50,6 +71,5 @@ export default {
   height: auto;
   margin: 40px;
   margin-top: 300px;
-  margin-bottom: 20px; /* Reducido de 40px a 20px */
 }
 </style>

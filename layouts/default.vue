@@ -41,7 +41,7 @@ export default {
       searchTerm: '',
       showSearch: false,
       characters: [],
-      filteredCharacters: [], // Lista de personajes filtrados
+      filteredCharacters: [],
     };
   },
 
